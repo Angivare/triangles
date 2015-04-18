@@ -26,16 +26,17 @@ var Triangles = function(el, w, n) {
   this.bg.style.overflow = 'hidden'
 
   var tri = this
-  $(window).on('resize', function() {
+  $(window).on('resize.TRIANGLES', function() {
     tri.fill_doc()
   })
 
-  new MutationObserver(function(mutations) {
+  this.mutation_observer = new MutationObserver(function(mutations) {
     mutations.forEach(function(m) {
       if(m.target == tri.bg || $.contains($(tri.bg),$(m.target))) return
       tri.fill_doc()
     })
-  }).observe(document, {
+  })
+  this.mutation_observer.observe(document, {
     childList: true,
     subtree: true
   })
@@ -50,6 +51,11 @@ Triangles.COLORS = [
   '#4C8DA6',
   '#5B608C',
 ]
+
+Triangles.prototype.untie = function() {
+  $(window).off('resize.TRIANGLES')
+  this.mutation_observer.disconnect()
+}
 
 Triangles.prototype.color = function() {
   return Triangles.COLORS[Math.floor(Math.random()*Triangles.COLORS.length)]
@@ -135,8 +141,6 @@ Triangles.prototype.fill = function(b) {
 }
 
 Triangles.prototype.fill_doc = function() {
-  var t = new Date().getMilliseconds()
-
   this.bg.style.width = 0
   this.bg.style.height = 0
   var w = $(this.bg.parentNode).innerWidth() + this.w/2,
@@ -148,6 +152,4 @@ Triangles.prototype.fill_doc = function() {
     right: w + this.W,
     bottom: h + this.H
   }))
-
-  console.log(new Date().getMilliseconds() - t)
 }
