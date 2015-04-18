@@ -3,7 +3,7 @@
 // @version      0.1
 // @author       Angivare
 // @description  TRIANGLES
-// @match    http://*.jeuxvideo.com/*
+// @match        http://*.jeuxvideo.com/*
 // @grant        none
 // ==/UserScript==
 
