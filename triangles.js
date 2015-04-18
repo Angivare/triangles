@@ -38,6 +38,7 @@ var Triangles = function(el, w, n) {
   })
   this.mutation_observer.observe(document, {
     childList: true,
+    attributes: true,
     subtree: true
   })
 

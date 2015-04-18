@@ -8,9 +8,8 @@
 // ==/UserScript==
 
 function TRIANGULARIZE() {
-  var c = $('#content')
-  c.css('background', 'initial')
-  TRIANGLES = new Triangles(c[0])
+  $('#content').css('background', 'rgba(0,0,0,0)')
+  TRIANGLES = new Triangles(document.body)
 }
 
 $.getScript('https://rawgit.com/Angivare/triangles/master/triangles.js', function() {
