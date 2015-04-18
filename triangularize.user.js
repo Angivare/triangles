@@ -7,7 +7,7 @@
 // @grant        none
 // ==/UserScript==
 
-$.getScript('https://raw.githubusercontent.com/Angivare/triangles/master/triangles.js', function() {
+$.getScript('https://rawgit.com/Angivare/triangles/master/triangles.js', function() {
     var c = $('#content')
     c.css('background', 'initial')
     new Triangles(c[0])
